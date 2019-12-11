@@ -1,6 +1,9 @@
 package com.whyvas.yammr.raftberry;
 
 import android.Manifest;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -36,6 +39,13 @@ public class MainActivity extends FragmentActivity implements mapFragment.OnFrag
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        SensorManager sensorManager;
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null){
+            // Success! There's a magnetometer.
+        } else {
+            // Failure! No magnetometer.
         }
     }
     @Override
